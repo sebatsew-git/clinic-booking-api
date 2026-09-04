@@ -1,4 +1,14 @@
 
+import { v4 as uuidv4 } from 'uuid';
+import {
+  Appointment,
+  AppointmentFilters,
+  AppointmentStats
+} from '../types/appointment.types';
+import {
+  CreateAppointmentInput,
+  UpdateAppointmentInput
+} from '../schemas/appointment.schema';
 
 // In-memory storage
 let appointments: Appointment[] = [];
