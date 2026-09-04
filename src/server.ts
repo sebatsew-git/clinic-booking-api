@@ -10,7 +10,7 @@ const server = app.listen(PORT, (): void => {
   console.log(' Clinic Appointment Booking API');
   console.log('='.repeat(60));
   console.log(` Server running on http://${HOST}:${PORT}`);
-  console.log(` Health check: http://${HOST}:${PORT}/health`);
+  console.log(` Health check: http://${HOST}:${PORT}/api/health`);
   console.log(` Appointments API: http://${HOST}:${PORT}/api/appointments`);
   console.log(` Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log('='.repeat(60));

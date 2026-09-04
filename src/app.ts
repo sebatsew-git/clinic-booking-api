@@ -14,7 +14,7 @@ app.use(express.json({ limit: '10mb' })); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true, limit: '10mb' })); // Parse URL-encoded bodies
 
 // Health check endpoint
-app.get('/health', (_req: Request, res: Response): void => {
+app.get('/api/health', (_req: Request, res: Response): void => {
   res.status(200).json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
@@ -34,7 +34,7 @@ app.get('/', (_req: Request, res: Response): void => {
     message: 'Welcome to Clinic Appointment Booking API',
     documentation: 'See README.md for API documentation',
     endpoints: {
-      health: 'GET /health',
+      health: 'GET /api/health',
       appointments: 'GET /api/appointments',
       createAppointment: 'POST /api/appointments',
       getAppointment: 'GET /api/appointments/:id',
