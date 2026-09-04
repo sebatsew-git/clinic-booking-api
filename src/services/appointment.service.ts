@@ -149,11 +149,11 @@ export class AppointmentService {
     excludeId?: string
   ): void {
     const appointmentHour: number = new Date(appointmentDate).getUTCHours();
-    const appointmentDateStr: string = new Date(appointmentDate).toDateString();
+    const appointmentDateStr: string = appointmentDate.slice(0, 10);
 
     const collision: boolean = appointments.some((app: Appointment): boolean => {
       const appHour: number = new Date(app.appointmentDate).getUTCHours();
-      const appDateStr: string = new Date(app.appointmentDate).toDateString();
+      const appDateStr: string = app.appointmentDate.slice(0, 10);
 
       return (
         app.id !== excludeId &&

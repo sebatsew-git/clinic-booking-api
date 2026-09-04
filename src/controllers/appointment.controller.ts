@@ -5,6 +5,7 @@ import {
   UpdateAppointmentInput
 } from '../schemas/appointment.schema';
 import { AppointmentFilters, ApiResponse } from '../types/appointment.types';
+import { Department } from '../schemas/appointment.schema';
 
 const appointmentService: AppointmentService = new AppointmentService();
 
@@ -39,7 +40,7 @@ export class AppointmentController {
   async findAll(req: Request, res: Response): Promise<void> {
     try {
       const filters: AppointmentFilters = {
-        department: req.query.department as any,
+        department: req.query.department as Department | undefined,
         search: req.query.search as string,
         isEmergency: req.query.isEmergency === 'true' ? true :
           req.query.isEmergency === 'false' ? false : undefined
@@ -64,7 +65,7 @@ export class AppointmentController {
 
   async findById(req: Request, res: Response): Promise<void> {
     try {
-      const { id }: { id: string } = req.params;
+      const { id } = req.params;
       const appointment = await appointmentService.findById(id);
 
       if (!appointment) {
@@ -91,7 +92,7 @@ export class AppointmentController {
 
   async update(req: Request, res: Response): Promise<void> {
     try {
-      const { id }: { id: string } = req.params;
+      const { id } = req.params;
       const data: UpdateAppointmentInput = req.body as UpdateAppointmentInput;
 
       // Check if update payload is empty
@@ -137,7 +138,7 @@ export class AppointmentController {
 
   async delete(req: Request, res: Response): Promise<void> {
     try {
-      const { id }: { id: string } = req.params;
+      const { id } = req.params;
       const deleted = await appointmentService.delete(id);
 
       if (!deleted) {
@@ -157,7 +158,7 @@ export class AppointmentController {
     }
   }
 
-  async getStats(req: Request, res: Response): Promise<void> {
+  async getStats(_req: Request, res: Response): Promise<void> {
     try {
       const stats = await appointmentService.getStats();
 

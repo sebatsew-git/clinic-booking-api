@@ -19,6 +19,9 @@ router.post(
 // GET /api/appointments - List all appointments with filters
 router.get('/', controller.findAll.bind(controller));
 
+// GET /api/appointments/stats/overview - Statistics (bonus)
+router.get('/stats/overview', controller.getStats.bind(controller));
+
 // GET /api/appointments/:id - Get single appointment
 router.get('/:id', controller.findById.bind(controller));
 
@@ -31,8 +34,5 @@ router.patch(
 
 // DELETE /api/appointments/:id - Delete appointment
 router.delete('/:id', controller.delete.bind(controller));
-
-// GET /api/appointments/stats/overview - Statistics (bonus)
-router.get('/stats/overview', controller.getStats.bind(controller));
 
 export default router;
