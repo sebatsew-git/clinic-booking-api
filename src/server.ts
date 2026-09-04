@@ -46,7 +46,7 @@ process.on('uncaughtException', (error: Error): void => {
 });
 
 // Handle unhandled rejections
-process.on('unhandledRejection', (reason: any, promise: Promise<any>): void => {
+process.on('unhandledRejection', (reason: unknown, promise: Promise<unknown>): void => {
   console.error(' Unhandled Rejection at:', promise, 'reason:', reason);
   shutdown('unhandledRejection');
 });
